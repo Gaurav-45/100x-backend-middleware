@@ -25,7 +25,7 @@ const CATEGORIES = {
   "Fact-Checker Agent": "/api/fact-check/",
   "Sentiment Analyzer": "/api/analyze-tweet/",
   "Meme Creator": "/api/generate-meme/",
-  "Others": "/api/process-tweet/",
+  Generic: "/api/process-tweet/",
 };
 
 // Enhanced prompt template for command classification
@@ -37,7 +37,7 @@ const classificationPrompt = new PromptTemplate({
     - Fact-Checker Agent (if they want fact-checking or verification)
     - Sentiment Analyzer (if they want emotional or sentiment analysis)
     - Meme Creator (if they want a meme response)
-    - Context Bridge (if they want explanation or context)
+    - Generic (if they want explanation or context or any simple activity)
 
     User Command: {command}
     Original Tweet Context: {originalTweet}
@@ -45,7 +45,8 @@ const classificationPrompt = new PromptTemplate({
     Examples:
     - "make this into a meme" → Meme Creator
     - "is this true?" → Fact-Checker Agent
-    - "explain this tweet" → Context Bridge
+    - "explain this tweet" → Generic
+    - "roast this tweet" → Generic
     - "what's the sentiment here" → Sentiment Analyzer
     - "make a thread about this" → Viral Thread Generator
 
