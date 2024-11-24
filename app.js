@@ -25,7 +25,7 @@ const CATEGORIES = {
   "Fact-Checker Agent": "/api/fact-check/",
   "Sentiment Analyzer": "/api/analyze-tweet/",
   "Meme Creator": "/api/generate-meme/",
-  Generic: "/api/analyze-tweet/",
+  Generic: "/api/process-tweet/",
 };
 
 // Enhanced prompt template for command classification
