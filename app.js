@@ -110,7 +110,8 @@ async function forwardToDjango(category, data) {
       case "Impersonation Agent":
         response = await axios.post(`${djangoBaseUrl}${endpoint}`, {
           ...payload,
-          tweet_text: data.originalTweet,
+          original_tweet: data.originalTweet,
+          user_command: data.command,
         });
         break;
 
