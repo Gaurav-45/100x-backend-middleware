@@ -11,6 +11,8 @@ const upload = multer({ storage: multer.memoryStorage() });
 const app = express();
 app.use(express.json());
 
+app.get("/", (req, res) => res.send("Hello world"));
+
 // Initialize OpenAI
 const model = new OpenAI({
   temperature: 0.3,
