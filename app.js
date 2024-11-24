@@ -25,7 +25,7 @@ const CATEGORIES = {
   "Fact-Checker Agent": "/api/fact-check/",
   "Sentiment Analyzer": "/api/analyze-tweet/",
   "Meme Creator": "/api/generate-meme/",
-  "Context Bridge": "/api/analyze-tweet/",
+  Generic: "/api/analyze-tweet/",
 };
 
 // Enhanced prompt template for command classification
@@ -136,10 +136,18 @@ async function forwardToDjango(category, data) {
         });
         break;
 
-      default: // Sentiment Analyzer and Context Bridge
+      case "Sentiment Analyzer":
         response = await axios.post(`${djangoBaseUrl}${endpoint}`, {
           ...payload,
           tweet_text: data.originalTweet,
+        });
+        break;
+
+      default: // Generic
+        response = await axios.post(`${djangoBaseUrl}${endpoint}`, {
+          ...payload,
+          tweet: data.originalTweet,
+          instructions: data.command,
         });
     }
     return response.data;
